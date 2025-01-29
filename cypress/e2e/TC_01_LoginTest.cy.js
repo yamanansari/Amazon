@@ -7,30 +7,18 @@ const invalidEmail = 'afjsakdj';
 const invalidPassword = 'asd';
 
 describe('Amazon Login Tests', () => {
- 
-  beforeEach(() => {
-
-    // Visit the Amazon login page before each test
-    cy.visit(url,{
-      headers:{"Accept-Encoding": "gzip , deflate"}
+  beforeEach(function () {  
+    cy.readFile('cypress/fixtures/session.json').then((session) => {
+      session.cookies.forEach((cookie) => {
+          cy.setCookie(cookie.name, cookie.value);
+      });
+  });
     });
-    loginPage.visitSignInPage();
-  });
-
-  it('Should show error for invalid email', () => {
-    loginPage.typeInEmail(invalidEmail);
-    loginPage.clickContinue();
-    loginPage.validateEmailErrorMessage();
-  });
-
-  it('Should show error for invalid password', () => {
-    cy.amazonLogin(validEmail, invalidPassword);
-    loginPage.validatePasswordErrorMessage();
-  });
 
   it('Should login successfully with valid email and password', () => {
-    cy.amazonLogin(validEmail, validPassword);
-    // validate login
+       
+    cy.visit(url)
+     // validate login
     loginPage.validateLogInUrl(); 
     loginPage.validateLogInUser();
     

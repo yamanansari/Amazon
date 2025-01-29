@@ -2,7 +2,8 @@
     "fullName": "yaman test",
     "phoneNumber": "1234567890",
     "postalCode": "110001",
-    "addressLine1": "Street Address 1",
-    "addressLine2": "Street Address 2",
+    "addressLine1" : "peer ka bazar karula",
+    "addressLine2" : "badi masjid",
+    "landMark" : "near doctor shakeel house ",
     "city": "New Delhi"
 }

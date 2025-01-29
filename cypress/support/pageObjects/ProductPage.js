@@ -1,6 +1,6 @@
 const selectors = {
     productPage: {
-        addToCartButton: "#add-to-cart-button.a-button-input",
+        addToCartButton: "[id='add-to-cart-button'][type='submit']",
         addToWishlistButton: "[title='Add to Wish List']", 
         viewWishlistLink: "#huc-view-your-list-button", 
     },

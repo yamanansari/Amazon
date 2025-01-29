@@ -8,7 +8,7 @@ const selectors = {
     },
     results: {
         productTitles: "div[data-cy='title-recipe']", 
-        selectProduct: "h2 span", 
+        selectProduct: " div[data-cy='title-recipe'] h2 span", 
         productList: ".s-main-slot .s-result-item", 
         productTitle: "span.a-text-normal"
     
@@ -30,7 +30,7 @@ export class ProductSearchPage {
     }
 
    selectProduct(product) {
-   return cy.get(selectors.results.selectProduct).contains(product)
+   return cy.get(selectors.results.productTitles).contains(product)
     .should('be.visible')
     .closest('a')
     .invoke('attr', 'href')
@@ -43,13 +43,19 @@ export class ProductSearchPage {
         return cy.get(selectors.filters.brand).contains(brandName).click();
     }
 
-    validateFilteredResults() {
+    validateFilteredResults() { // is not empty 
         return cy.get(selectors.results.selectProduct).should('have.length.greaterThan', 0);
     }
     validateBrandFilter(brandName) {
        return cy.get(selectors.results.selectProduct).each(($el) => {
+        const regex = new RegExp(brandName, 'i');
             cy.log($el.text());
-            cy.wrap($el).should('contain.text', brandName);
+            
+            cy.wrap($el).invoke('text') // Fetch the text of the element
+            .then((text) => {
+                cy.log(text); 
+                expect(text).to.match(regex); // Perform a case-insensitive match
+            });
         });
     }
 }

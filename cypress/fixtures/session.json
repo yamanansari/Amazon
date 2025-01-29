@@ -1,0 +1,144 @@
+{
+  "cookies": [
+    {
+      "name": "id_pkel",
+      "value": "n1",
+      "path": "/",
+      "secure": true,
+      "hostOnly": true,
+      "httpOnly": false,
+      "expiry": 1738146767,
+      "domain": "www.amazon.in",
+      "sameSite": "strict"
+    },
+    {
+      "name": "id_pk",
+      "value": "eyJuIjoiMSJ9",
+      "path": "/",
+      "secure": true,
+      "hostOnly": true,
+      "httpOnly": false,
+      "expiry": 1738146767,
+      "domain": "www.amazon.in",
+      "sameSite": "strict"
+    },
+    {
+      "name": "csm-hit",
+      "value": "tb:A8C1BJ406S50Z3F7ZMPP+s-41AHXP06FQN5P5HGTYRM|1738145871315&t:1738145871315&adb:adblk_no",
+      "path": "/",
+      "secure": false,
+      "hostOnly": true,
+      "httpOnly": false,
+      "expiry": 1768385871,
+      "domain": "www.amazon.in"
+    },
+    {
+      "name": "session-token",
+      "value": "\"6jNK6bVVZjTMkV/AESvqyd5PvdCwa9dyNVPI9Dr8MWC/Lfe+/NcqEXyFT1h30tWDmD2fMD9UJsotbqRZitwdGidOdjTiB8/3g7w/VCOQxzvIaAf/fLF7ksvmokPPuXamyV+DD/fn9mB/BJHnVBJ6edjxF1MEa2YnW9ddtkDXhGIBd8somMI5gPYASm/+S2jLcDb7IFr58V9S/nshp8zGmKpFpJC/5/XscP4a7d82IO751BVpH8i7jtRYdT0CKtgrjjf0AMIHO3H+8EU42a840azXjq3xysLIWxpyFiGqmoQm46j4qzj3D9aNyyy4CjWf3yA8FhdvmOauK6qzh5gIN+pW0lM25AxM8WZfaxyOx0ZluP5Chc9nWA==\"",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "expiry": 1769681864.453,
+      "domain": ".amazon.in",
+      "sameSite": "lax"
+    },
+    {
+      "name": "i18n-prefs",
+      "value": "INR",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "expiry": 1769681868,
+      "domain": ".amazon.in",
+      "sameSite": "lax"
+    },
+    {
+      "name": "lc-acbin",
+      "value": "en_IN",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "expiry": 1769681868,
+      "domain": ".amazon.in",
+      "sameSite": "lax"
+    },
+    {
+      "name": "at-acbin",
+      "value": "Atza|IwEBIGKl78ycb1q9CGNeezvf1nvyzmHI1PQu8kp1tSRI83vJQiNE5YVGnUpugBfytpDGm5HZdYIO99yiPAsA_3FMHiYGX4Q9gvXfGkz2z_g9BHPviRFuAw6PtsX-abaPvoUAVlCT1zikt_bCunhwp5HMt4SRFAH2OY07hCQ0yWXiIS5SKMoHvt0HuuM-01ASuMS8H1PnhZWB901KRjMsBnAofQYNRCL51CCYXFrB4lXetlAeYg",
+      "path": "/",
+      "secure": true,
+      "httpOnly": true,
+      "expiry": 1769681869,
+      "domain": ".amazon.in",
+      "sameSite": "lax"
+    },
+    {
+      "name": "sst-acbin",
+      "value": "Sst1|PQExKkymnM7IVLVa62VuDu_gCcTtL313p_SJkF2nas4i9PXY005FpU4shd_PafiSx-7lseq45-W7HUXlQL4rG7llmM3Y1yMAJYNFtRhVvY3D4lM15z45_vXu3ZYCgGQBGaRa_C4B6iK8k5AcCxkZZYrDTepvxR83WFhaCRLHlRbGPEFp023LCC90Sddo2H2eMysX1FoDcZxrOYLjeNskBzcqOzEIz4FbSehYg2ra_isqUIwCa71gcFCYbIizAG99OlfT7ehRCXylHWJ0VB3XxKGnyru5EKnVHomNUdlT9tq_1I4",
+      "path": "/",
+      "secure": true,
+      "httpOnly": true,
+      "expiry": 1769681869,
+      "domain": ".amazon.in",
+      "sameSite": "lax"
+    },
+    {
+      "name": "session-id-time",
+      "value": "2082787201l",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "expiry": 1769681869,
+      "domain": ".amazon.in",
+      "sameSite": "lax"
+    },
+    {
+      "name": "x-acbin",
+      "value": "\"6bmREuUpmVR?r1csb10ZrF3pASasDPggjjjdJb6@RRSeiVS90eloio3QqUG0xTxt\"",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "expiry": 1769681869.201,
+      "domain": ".amazon.in",
+      "sameSite": "lax"
+    },
+    {
+      "name": "sess-at-acbin",
+      "value": "\"vURZDgT7Ek0focTIBXCJIj5DIzqtV6Vbq+8Ots+pK3U=\"",
+      "path": "/",
+      "secure": true,
+      "httpOnly": true,
+      "expiry": 1769681869.201,
+      "domain": ".amazon.in",
+      "sameSite": "lax"
+    },
+    {
+      "name": "session-id",
+      "value": "262-2103234-4622359",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "expiry": 1769681870.124222,
+      "domain": ".amazon.in"
+    },
+    {
+      "name": "ubid-acbin",
+      "value": "258-4344238-7182433",
+      "path": "/",
+      "secure": true,
+      "httpOnly": false,
+      "expiry": 1769681870.124386,
+      "domain": ".amazon.in"
+    },
+    {
+      "name": "JSESSIONID",
+      "value": "7D60106C5F9B66FB7C7F50812C719C17",
+      "path": "/",
+      "secure": true,
+      "hostOnly": true,
+      "httpOnly": true,
+      "domain": "www.amazon.in",
+      "sameSite": "lax"
+    }
+  ]
+}

@@ -10,18 +10,22 @@ const reviewPage = new ReviewPage();
 
 describe('Amazon Product Review and Rating', () => {
 
-    beforeEach(() => {
-        // Visit the Amazon login page before each test
-        cy.visit(url,{
-            headers:{"Accept-Encoding": "gzip , deflate"}
+    beforeEach(function () {  
+        cy.readFile('cypress/fixtures/session.json').then((session) => {
+            session.cookies.forEach((cookie) => {
+                cy.setCookie(cookie.name, cookie.value);
+            });
         });
-        loginPage.visitSignInPage();
-    });
+       cy.visit(url,{
+               headers:{"Accept-Encoding": "gzip , deflate"}
+               });
+           loginPage.validateLogInUrl(); 
+           loginPage.validateLogInUser();
+              
+               });
+               
 
     it('Should allow a user to submit a product review and verify it', () => {
-        
-        // Log in
-        cy.amazonLogin(validEmail, validPassword);
 
         // Navigate to "Your Orders"
         accountPage.navigateToYourOrders();

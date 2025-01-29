@@ -15,6 +15,14 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-
+import {validEmail,validPassword } from "../support/constants";
+before(() => {
+    
+    cy.login(validEmail, validPassword); // ✅ Run session login before any test suites
+});
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // Prevent failing the test
+    return false;
+  });

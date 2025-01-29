@@ -8,6 +8,11 @@ module.exports = defineConfig({
     "openMode": 1  // Number of retries when running tests via cypress open.
   },
   e2e: {
+    baseUrl: 'https://www.amazon.in',
+        env: {
+            validEmail: '7599900207',
+            validPassword: 'yaman@786',
+          },
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

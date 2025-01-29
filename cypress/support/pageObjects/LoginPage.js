@@ -18,6 +18,10 @@ const selectors = {
     } ,
     validate:{
         validLogIn: '#nav-link-accountList-nav-line-1',
+    },
+    NewTab:{
+        videoLink: "[aria-label='Start watching on Prime Video']",
+        PrimeURL: "/www.primevideo.com/"
     }
 };
 
@@ -52,5 +56,13 @@ export class LoginPage {
     validateLogInUser(){
      return cy.get(selectors.validate.validLogIn).should('contain', 'Hello, Yaman');
     }
-
+    VisitPrimeVideo(){
+        return cy.get(selectors.NewTab.videoLink).invoke('removeAttr', 'target').click({ force: true });
+    }
+    ValidatePrimeURL(){
+        cy.intercept('GET', '**primevideo.com**').as('primeVideoLoad');
+        cy.wait('@primeVideoLoad', { timeout: 10000 });
+        cy.url().should('include', 'www.primevideo.com');
+   
+    }
 }

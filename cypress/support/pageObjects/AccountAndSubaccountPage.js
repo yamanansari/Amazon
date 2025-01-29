@@ -8,11 +8,11 @@ const selectors = {
         writeReviewButton: "a[href*='review']",
     },
     review: {
-        starRating: ".ryp__star__button", 
-        reviewTitle: "#scarface-review-title-label",
-        reviewText: "#scarface-review-text-card-title",
-        submitButton: '[data-hook="ryp-review-submit-button"]',
-        submittedReview: ".ryp__thank-you-title",
+        starRating: "[class*='starRating-single']", 
+        reviewTitle: "#reviewTitle",
+        reviewText: "#reviewText",
+        submitButton: '.a-button-input',
+        submittedReview: "[data-testid='in-context-ryp__thankyou-text']",
     }
 };
 
@@ -20,7 +20,7 @@ const selectors = {
 export class AccountPage {
     navigateToYourOrders() {
         cy.get(selectors.accountMenu.accountMenuButton).trigger('mouseover');
-        return cy.get(selectors.accountMenu.yourOrders).click();
+        return cy.get(selectors.accountMenu.yourOrders).click({force:true});
     }
 }
 
@@ -47,7 +47,9 @@ export class ReviewPage {
 
     validateReviewSubmission() {
         return cy.get(selectors.review.submittedReview)
-        .should('contain', "Review submitted - Thank you!");
+        .should('contain', "Review Submitted");
+
+        // add one more assertion check review added or not or rating is correct 
     }
 
 }
