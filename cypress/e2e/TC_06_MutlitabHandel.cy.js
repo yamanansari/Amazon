@@ -1,7 +1,7 @@
 /// <reference types='cypress' />
 
 // import { url,validEmail,validPassword } from "../support/constants";
-import { LoginPage } from "../support/pageObjects/loginPage";
+import { LoginPage } from "../support/pageObjects/LoginPage";
 
 const loginPage = new LoginPage();
 
@@ -21,7 +21,7 @@ describe('Amazon Login Tests', () => {
         });
 
   it.skip('Should login successfully with valid email and password', () => {
-    
+    cy.visit('/')
     // visit prime video url
     loginPage.VisitPrimeVideo();
     // validate visited URL

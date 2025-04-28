@@ -4,9 +4,9 @@
 import { ProductPage } from "../support/pageObjects/ProductPage";
 import { ProductSearchPage } from "../support/pageObjects/ProductSearchPage";
 import { WishlistPage } from "../support/pageObjects/WishListPage";
-import { LoginPage } from "../support/pageObjects/loginPage";
+// import { LoginPage } from "../support/pageObjects/LoginPage";
 
-const loginPage = new LoginPage();
+// const loginPage = new LoginPage();
 const wishlistPage = new WishlistPage();
 const productSearchPage = new ProductSearchPage();
 const productPage = new ProductPage();

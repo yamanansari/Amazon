@@ -1,11 +1,11 @@
 /// <reference types='cypress' />
 
 // import { url,validEmail,validPassword} from "../support/constants";
-import { LoginPage } from "../support/pageObjects/loginPage";
+// import { LoginPage } from "../support/pageObjects/LoginPage";
 import { ProductSearchPage } from "../support/pageObjects/ProductSearchPage";
 
 const productSearchPage = new ProductSearchPage();
-const loginPage = new LoginPage();
+// const loginPage = new LoginPage();
 describe('Amazon Product Search and Filter', () => {
     
     beforeEach(function () {  

@@ -56,20 +56,24 @@ export class LoginPage {
     validateLogInUser(){
      return cy.get(selectors.validate.validLogIn).should('contain', 'Hello');
     }
-    VisitPrimeVideo(){
-        //  cy.get(selectors.NewTab.videoLink).invoke('removeAttr', 'target').click({ force: true });
-        cy.origin(selectors.NewTab.PrimeURL, ()=>{
-            cy.log(cy.url());
-            cy.pause();
-        });
-    }
-    ValidatePrimeURL(){
-        cy.log(cy.url());
-         cy.pause();
-       cy.reload();
-       cy.log(cy.url());
-     cy.pause()
-       return cy.get('[data-testid="pv-nav-join-prime"]').should('contain.text','Join Prime');
-    }
+    VisitPrimeVideo() {
+    // Use cy.origin() to visit the Prime Video URL from the NewTab.PrimeURL selector
+    cy.origin(selectors.NewTab.PrimeURL, () => {
+        // Logging the current URL to confirm the correct page is loaded
+        cy.log('Visiting Prime Video URL:', cy.url());
+
+        // Optional: If you need to interact with elements after visiting the Prime Video page
+        // For example, click the "Start watching on Prime Video" link
+        // cy.get(selectors.NewTab.videoLink).click();
+    });
+}
+
+ValidatePrimeURL() {
+    // Log the current URL to confirm you are on the correct page
+    cy.log('Current URL:', cy.url());
+
+    // Assert that the "Join Prime" text is present on the page
+    cy.get('[data-testid="pv-nav-join-prime"]').should('contain.text', 'Join Prime');
+}
 
 }

@@ -1,7 +1,7 @@
 /// <reference types='cypress' />
 
 // import { url,validEmail,validPassword} from "../support/constants";
-import { LoginPage } from "../support/pageObjects/loginPage";
+import { LoginPage } from "../support/pageObjects/LoginPage";
 
 const loginPage = new LoginPage();
 
