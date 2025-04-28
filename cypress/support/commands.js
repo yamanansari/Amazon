@@ -12,10 +12,7 @@ const loginPage = new LoginPage();
 //   loginPage.clickSignIn();
 // });
 Cypress.Commands.add('amazon', () => {
-  
-  
   cy.session("amazon session ", () => {
-    cacheAcrossSpecs: true, 
     cy.visit('/')
         loginPage.visitSignInPage()
         

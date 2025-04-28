@@ -21,16 +21,27 @@ export class CartPage {
         .contains(productName)
         .closest('div.sc-list-item')
         .within(() => {
-            cy.get(selectors.cart.quantityCheck).then(($input) => {
-                const currentQuantity = parseInt($input.val(), 10);
-                if (currentQuantity > 1) {
-                  cy.get(selectors.cart.quantityStepper)
-                    .find(selectors.cart.decreaseQuantityButton) // Find the decrement button
-                    .click(); // Click it to reduce quantity by 1
-                }
-              });
-              cy.get(selectors.cart.quantityCheck)
-              .should('have.value', '1')
+            function decreaseUntilOne() {
+                cy.get(selectors.cart.quantityCheck).then(($input) => {
+                    const currentQuantity = parseInt($input.val(), 10);
+                    if (currentQuantity > 1) {
+                        cy.get(selectors.cart.quantityStepper)
+                            .find(selectors.cart.decreaseQuantityButton)
+                            .click({ force: true });
+                        // After clicking, recursively call again
+                        decreaseUntilOne();
+                    } else {
+                        // Quantity is now 1, nothing more to do
+                        cy.log('Quantity is now 1');
+                    }
+                });
+            }
+
+            decreaseUntilOne();
+
+            // Final check after ensuring quantity is 1
+            cy.get(selectors.cart.quantityCheck)
+              .should('have.value', '1');
         });
     }
     proceedToCheckout() {

@@ -10,6 +10,7 @@ const selectors = {
             landmark1: "[name *=landmark]",
             city: "#address-ui-widgets-enterAddressCity",
             useAddressButton: "#checkout-primary-continue-button-id-announce",
+            useAddressButton2: "#address-ui-widgets-form-submit-button",
             shippingAddressChangebutton: '[data-frompage="payselect"]'
         },
         addressValidation: {

@@ -19,7 +19,7 @@ module.exports = defineConfig({
     CYPRESS_RECORD_KEY: process.env.CYPRESS_RECORD_KEY,
   },
   e2e: {
-   
+   baseUrl: 'https://www.amazon.in',
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
