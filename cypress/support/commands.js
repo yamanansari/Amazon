@@ -1,5 +1,5 @@
 import 'cypress-iframe'
-import { LoginPage } from '../support/pageObjects/loginPage';
+import { LoginPage } from './pageObjects/loginPage';
 import{validEmail,validPassword}from '../support/constants';
 const loginPage = new LoginPage();
 
