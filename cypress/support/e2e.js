@@ -15,7 +15,6 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import {validEmail,validPassword } from "../support/constants";
 // before(() => {
     
 //     cy.login(validEmail, validPassword); // Run session login before any test suites
