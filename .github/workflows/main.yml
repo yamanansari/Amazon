@@ -1,68 +1,33 @@
-name: Amazon Tests
-
-on:
-  push:
-    branches:
-      - main
-      - master
-  workflow_dispatch:
-    inputs:
-      browser:
-        description: 'Browser to run tests (chrome, firefox, edge)'
-        required: false
-        default: 'chrome'
-      headed:
-        description: 'Run tests in headed mode (true/false)'
-        required: false
-        default: 'false'
-      parallel:
-        description: 'Run tests in parallel (true/false)'
-        required: false
-        default: 'true'
-      retries:
-        description: 'Number of retries for failed tests'
-        required: false
-        default: '2'
-      tag:
-        description: 'Cypress tag to filter tests (example: @smoke)'
-        required: false
-        default: ''
-  schedule:
-    - cron: '0 0 * * *' # Every night at midnight
-
+name: Cypress Tests
+on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-
+    # Runs tests in parallel with matrix strategy https://docs.cypress.io/guides/guides/parallelization
+    # https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+    # Also see warning here https://github.com/cypress-io/github-action#parallel
+    strategy:
+      fail-fast: false # https://github.com/cypress-io/github-action/issues/48
+      matrix:
+        containers: [1, 2] # Uses 2 parallel instances
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Install Chrome
-        run: sudo apt-get install -y google-chrome-stable
-
-      - name: Run Cypress Tests
+      - name: Cypress run
+        # Uses the official Cypress GitHub action https://github.com/cypress-io/github-action
         uses: cypress-io/github-action@v6
         with:
+          # Starts web server for E2E tests - replace with your own server invocation
+          # https://docs.cypress.io/guides/continuous-integration/introduction#Boot-your-server
+          start: npm start
+          wait-on: 'http://localhost:3000' # Waits for above
+          # Records to Cypress Cloud 
+          # https://docs.cypress.io/guides/cloud/projects#Set-up-a-project-to-record
           record: true
-          parallel: ${{ github.event.inputs.parallel || 'true' }}
-          browser: ${{ github.event.inputs.browser || 'chrome' }}
-          headed: ${{ github.event.inputs.headed || 'false' }}
-          spec: ${{ github.event.inputs.tag && format('cypress/e2e/**/*{0}*.cy.{1}', github.event.inputs.tag, 'js') || '' }}
-          config: retriesRunMode=${{ github.event.inputs.retries || '2' }}
+          parallel: true # Runs test in parallel using settings above
         env:
+          # For recording and parallelization to work you must set your CYPRESS_RECORD_KEY
+          # in GitHub repo → Settings → Secrets → Actions
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-
-      - name: Upload Screenshots on Failure
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-
-      - name: Upload Videos Always
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: cypress-videos
-          path: cypress/videos
+          # Creating a token https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
