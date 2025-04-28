@@ -1,0 +1,68 @@
+name: Amazon Tests
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser to run tests (chrome, firefox, edge)'
+        required: false
+        default: 'chrome'
+      headed:
+        description: 'Run tests in headed mode (true/false)'
+        required: false
+        default: 'false'
+      parallel:
+        description: 'Run tests in parallel (true/false)'
+        required: false
+        default: 'true'
+      retries:
+        description: 'Number of retries for failed tests'
+        required: false
+        default: '2'
+      tag:
+        description: 'Cypress tag to filter tests (example: @smoke)'
+        required: false
+        default: ''
+  schedule:
+    - cron: '0 0 * * *' # Every night at midnight
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Chrome
+        run: sudo apt-get install -y google-chrome-stable
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v6
+        with:
+          record: true
+          parallel: ${{ github.event.inputs.parallel || 'true' }}
+          browser: ${{ github.event.inputs.browser || 'chrome' }}
+          headed: ${{ github.event.inputs.headed || 'false' }}
+          spec: ${{ github.event.inputs.tag && format('cypress/e2e/**/*{0}*.cy.{1}', github.event.inputs.tag, 'js') || '' }}
+          config: retriesRunMode=${{ github.event.inputs.retries || '2' }}
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+
+      - name: Upload Screenshots on Failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+
+      - name: Upload Videos Always
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos
