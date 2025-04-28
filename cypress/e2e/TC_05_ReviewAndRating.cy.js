@@ -1,3 +1,4 @@
+/// <reference types='cypress' />
 
 import { reviewText, reviewTitle, url, validEmail, validPassword } from "../support/constants";
 import { LoginPage } from "../support/pageObjects/loginPage";

@@ -1,5 +1,6 @@
+/// <reference types='cypress' />
 
-import { url,validEmail,validPassword} from "../support/constants";
+// import { url,validEmail,validPassword} from "../support/constants";
 import { LoginPage } from "../support/pageObjects/loginPage";
 import { ProductSearchPage } from "../support/pageObjects/ProductSearchPage";
 
