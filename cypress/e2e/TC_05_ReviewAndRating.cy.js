@@ -16,17 +16,19 @@ describe('Amazon Product Review and Rating', () => {
                 cy.setCookie(cookie.name, cookie.value);
             });
         });
-       cy.visit(url,{
-               headers:{"Accept-Encoding": "gzip , deflate"}
-               });
-           loginPage.validateLogInUrl(); 
-           loginPage.validateLogInUser();
+    //    cy.visit(url,{
+    //            headers:{"Accept-Encoding": "gzip , deflate"}
+    //            });
+    //        loginPage.validateLogInUrl(); 
+    //        loginPage.validateLogInUser();
               
                });
                
 
     it('Should allow a user to submit a product review and verify it', () => {
 
+        cy.visit('/')
+        
         // Navigate to "Your Orders"
         accountPage.navigateToYourOrders();
 

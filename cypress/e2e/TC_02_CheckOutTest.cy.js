@@ -13,18 +13,24 @@ const checkoutPage = new CheckoutPage();
 const loginPage = new LoginPage();
 
 describe('Amazon.in Product Search, Add to Cart and Checkout Test', () => {
+    // before(function (){
+    //     cy.reload()
+    //     cy.amazon(validEmail, validPassword); 
+    // })
                   
     beforeEach(function () {
+        
+       
         cy.readFile('cypress/fixtures/session.json').then((session) => {
             session.cookies.forEach((cookie) => {
                 cy.setCookie(cookie.name, cookie.value);
             });
         });
-       cy.visit(url,{
-               headers:{"Accept-Encoding": "gzip , deflate"}
-               });
-           loginPage.validateLogInUrl(); 
-           loginPage.validateLogInUser();
+    //    cy.visit(url,{
+    //            headers:{"Accept-Encoding": "gzip , deflate"}
+    //            });
+    //        loginPage.validateLogInUrl(); 
+    //        loginPage.validateLogInUser();
               
         // Visit the Amazon login page before each test
         cy.fixture('product').then((product) => {

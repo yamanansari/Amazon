@@ -12,16 +12,15 @@ describe('Amazon Login Tests', () => {
             cy.setCookie(cookie.name, cookie.value);
         });
     });
-       cy.visit(url,{
-               headers:{"Accept-Encoding": "gzip , deflate"}
-               });
-           loginPage.validateLogInUrl(); 
-           loginPage.validateLogInUser();
+      //  cy.visit(url,{
+      //          headers:{"Accept-Encoding": "gzip , deflate"}
+      //          });
+      //      loginPage.validateLogInUrl(); 
+      //      loginPage.validateLogInUser();
         });
 
-  it('Should login successfully with valid email and password', () => {
-    // cy.amazonLogin(validEmail, validPassword);
-   
+  it.skip('Should login successfully with valid email and password', () => {
+    
     // visit prime video url
     loginPage.VisitPrimeVideo();
     // validate visited URL

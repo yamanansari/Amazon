@@ -13,7 +13,7 @@ const selectors = {
 export class ProductPage {
     addToCart() {
         // Click on add to cart button
-        return cy.get(selectors.productPage.addToCartButton).eq(0).click({force:true});
+        return cy.get(selectors.productPage.addToCartButton).eq(0).scrollIntoView().dblclick({force:true});
     }
     proceedToCheckout() {
         // Click on proceed to checkout button

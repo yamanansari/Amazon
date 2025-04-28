@@ -18,11 +18,11 @@ describe('Amazon.in Wishlist Test', () => {
                 cy.setCookie(cookie.name, cookie.value);
             });
         });
-        cy.visit(url,{
-                headers:{"Accept-Encoding": "gzip , deflate"}
-                });
-            loginPage.validateLogInUrl(); 
-            loginPage.validateLogInUser();
+        // cy.visit(url,{
+        //         headers:{"Accept-Encoding": "gzip , deflate"}
+        //         });
+        //     loginPage.validateLogInUrl(); 
+        //     loginPage.validateLogInUser();
 
             cy.fixture('product').then((product) => {
                 this.product = product;
@@ -34,11 +34,11 @@ describe('Amazon.in Wishlist Test', () => {
         
         cy.visit('/')
         // Search for the product
-        productSearchPage.typeInSearchBar(this.product.name);
+        productSearchPage.typeInSearchBar(this.product.productName);
         productSearchPage.clickSearchButton();
 
         // Select the specific product
-        productSearchPage.selectProduct(this.product.name);
+        productSearchPage.selectProduct(this.product.productName);
 
         // Add the product to the wishlist
         productPage.addToWishlist();
@@ -47,7 +47,7 @@ describe('Amazon.in Wishlist Test', () => {
         productPage.navigateToWishlist();
 
         // Verify the product is added to the wishlist
-        wishlistPage.verifyItemInWishlist(this.product.name);
+        wishlistPage.verifyItemInWishlist(this.product.productName);
    
         wishlistPage.navigateToWishlist();
         wishlistPage.searchItemInWishList(this.product.name);

@@ -7,7 +7,7 @@
       "secure": true,
       "hostOnly": true,
       "httpOnly": false,
-      "expiry": 1738146767,
+      "expiry": 1745819743,
       "domain": "www.amazon.in",
       "sameSite": "strict"
     },
@@ -18,27 +18,37 @@
       "secure": true,
       "hostOnly": true,
       "httpOnly": false,
-      "expiry": 1738146767,
+      "expiry": 1745819743,
       "domain": "www.amazon.in",
       "sameSite": "strict"
     },
     {
-      "name": "csm-hit",
-      "value": "tb:A8C1BJ406S50Z3F7ZMPP+s-41AHXP06FQN5P5HGTYRM|1738145871315&t:1738145871315&adb:adblk_no",
+      "name": "rxc",
+      "value": "AM0gPywvGrDDNup2IMw",
       "path": "/",
       "secure": false,
       "hostOnly": true,
       "httpOnly": false,
-      "expiry": 1768385871,
+      "expiry": 1745905240.980538,
+      "domain": "www.amazon.in"
+    },
+    {
+      "name": "csm-hit",
+      "value": "tb:s-6QA5ZPY94EVZ1WYJSA6G|1745818846640&t:1745818846774&adb:adblk_no",
+      "path": "/",
+      "secure": false,
+      "hostOnly": true,
+      "httpOnly": false,
+      "expiry": 1776058846,
       "domain": "www.amazon.in"
     },
     {
       "name": "session-token",
-      "value": "\"6jNK6bVVZjTMkV/AESvqyd5PvdCwa9dyNVPI9Dr8MWC/Lfe+/NcqEXyFT1h30tWDmD2fMD9UJsotbqRZitwdGidOdjTiB8/3g7w/VCOQxzvIaAf/fLF7ksvmokPPuXamyV+DD/fn9mB/BJHnVBJ6edjxF1MEa2YnW9ddtkDXhGIBd8somMI5gPYASm/+S2jLcDb7IFr58V9S/nshp8zGmKpFpJC/5/XscP4a7d82IO751BVpH8i7jtRYdT0CKtgrjjf0AMIHO3H+8EU42a840azXjq3xysLIWxpyFiGqmoQm46j4qzj3D9aNyyy4CjWf3yA8FhdvmOauK6qzh5gIN+pW0lM25AxM8WZfaxyOx0ZluP5Chc9nWA==\"",
+      "value": "\"rNje1P+B+duHz+KEsk9TUxYnUJWdSocDtPhG2WZT3XJ1IuSO/7GfMZxO45VF0GlXswsTjZyWKo+6tLUogsp9dWp1PCZ34JWp/GRocT8dwdQEKLqGOanDKJkpYjd2tNrvxfaDOMG1kHNEyl/pjFHU9hT0gSCpx2bY8ZiBCmexxR8cb/CnuOSnt1JthLu3huu+RYCU+4OM4VuIf9T3BLnTIjZjc8XzJkbjhGYZfgwcAs2aMPFGpcouKY+z2zEqP5tSc/9Nx7zoB1YXfoFR2gXQpg9W7rExYCGrcMni4/B4BFDQsXkOz0ijPqEaffCGT9a+iIJYiugXru8OWSUftVg/X97/uenLtDhUFGbrecOP1dPzhe97m2qn+A==\"",
       "path": "/",
       "secure": true,
       "httpOnly": false,
-      "expiry": 1769681864.453,
+      "expiry": 1777354838.695,
       "domain": ".amazon.in",
       "sameSite": "lax"
     },
@@ -48,7 +58,7 @@
       "path": "/",
       "secure": true,
       "httpOnly": false,
-      "expiry": 1769681868,
+      "expiry": 1777354844,
       "domain": ".amazon.in",
       "sameSite": "lax"
     },
@@ -58,27 +68,27 @@
       "path": "/",
       "secure": true,
       "httpOnly": false,
-      "expiry": 1769681868,
+      "expiry": 1777354844,
       "domain": ".amazon.in",
       "sameSite": "lax"
     },
     {
       "name": "at-acbin",
-      "value": "Atza|IwEBIGKl78ycb1q9CGNeezvf1nvyzmHI1PQu8kp1tSRI83vJQiNE5YVGnUpugBfytpDGm5HZdYIO99yiPAsA_3FMHiYGX4Q9gvXfGkz2z_g9BHPviRFuAw6PtsX-abaPvoUAVlCT1zikt_bCunhwp5HMt4SRFAH2OY07hCQ0yWXiIS5SKMoHvt0HuuM-01ASuMS8H1PnhZWB901KRjMsBnAofQYNRCL51CCYXFrB4lXetlAeYg",
+      "value": "Atza|IwEBICFgAjxid92ImmXu7tgKGbYDZDhvkjZGNXywZZ-f8hAzBbKw91WxMk5mtFIYznofhm2kah9dkZ6MDaw6GI-G4h0TTgLg17hKq7E0r2Qfffi4yjelP2BjulpoOzFQi8Df7_v7zaUPYHaJ2Ay1wlwZohrgX02czj-uQzKgWf_ZpNuYeRsYgiheuGDrFSXug8MhNVRLgTDdyR1r8gYnlnngffgWVtkLi_tMfBEbVLrb5GghUw",
       "path": "/",
       "secure": true,
       "httpOnly": true,
-      "expiry": 1769681869,
+      "expiry": 1777354844,
       "domain": ".amazon.in",
       "sameSite": "lax"
     },
     {
       "name": "sst-acbin",
-      "value": "Sst1|PQExKkymnM7IVLVa62VuDu_gCcTtL313p_SJkF2nas4i9PXY005FpU4shd_PafiSx-7lseq45-W7HUXlQL4rG7llmM3Y1yMAJYNFtRhVvY3D4lM15z45_vXu3ZYCgGQBGaRa_C4B6iK8k5AcCxkZZYrDTepvxR83WFhaCRLHlRbGPEFp023LCC90Sddo2H2eMysX1FoDcZxrOYLjeNskBzcqOzEIz4FbSehYg2ra_isqUIwCa71gcFCYbIizAG99OlfT7ehRCXylHWJ0VB3XxKGnyru5EKnVHomNUdlT9tq_1I4",
+      "value": "Sst1|PQF82u6D7gYtE2AvtGDKSsRHCdgCe0RziZoD7iaBN6XnBJI-jyqLBYy8zYr2OncTN6LTWqdNTH754usVhPcX8ecoKfDZjv1KGZoIAJYD70RZ06sToeylaUjeqHvHEUKVMM7C6Cyt_KkP5774pLYztwLMGLoQXvniZEJ7CstOdOgwNKbefyTqgJknIbIYRMjFlcAUxWxlP32nyVablDCJGwovyqmFRMAV9ld7zJCRtGJ5k-ZwA4CD0lXupxWALnFNVcpKqML3_mz9hCm2th5mAyECjGRxmjtT91dGVkHSFgnp7-4",
       "path": "/",
       "secure": true,
       "httpOnly": true,
-      "expiry": 1769681869,
+      "expiry": 1777354844,
       "domain": ".amazon.in",
       "sameSite": "lax"
     },
@@ -88,57 +98,47 @@
       "path": "/",
       "secure": true,
       "httpOnly": false,
-      "expiry": 1769681869,
+      "expiry": 1777354844,
       "domain": ".amazon.in",
       "sameSite": "lax"
     },
     {
       "name": "x-acbin",
-      "value": "\"6bmREuUpmVR?r1csb10ZrF3pASasDPggjjjdJb6@RRSeiVS90eloio3QqUG0xTxt\"",
+      "value": "\"VNYPYrl06a2kTqTEweb?XRZ6@sF0B?hy4nD5YYI0NKZ?sBKnX?9PwqCE9VUtDCm1\"",
       "path": "/",
       "secure": true,
       "httpOnly": false,
-      "expiry": 1769681869.201,
+      "expiry": 1777354845.158,
       "domain": ".amazon.in",
       "sameSite": "lax"
     },
     {
       "name": "sess-at-acbin",
-      "value": "\"vURZDgT7Ek0focTIBXCJIj5DIzqtV6Vbq+8Ots+pK3U=\"",
+      "value": "\"BGqzh/QLbJHf7yG/0UjV2zqhiJbP1ZgU5N65fKZr1iU=\"",
       "path": "/",
       "secure": true,
       "httpOnly": true,
-      "expiry": 1769681869.201,
+      "expiry": 1777354845.159,
       "domain": ".amazon.in",
       "sameSite": "lax"
     },
     {
       "name": "session-id",
-      "value": "262-2103234-4622359",
+      "value": "259-8239838-9529010",
       "path": "/",
       "secure": true,
       "httpOnly": false,
-      "expiry": 1769681870.124222,
+      "expiry": 1777354846.222699,
       "domain": ".amazon.in"
     },
     {
       "name": "ubid-acbin",
-      "value": "258-4344238-7182433",
+      "value": "259-7134097-8620613",
       "path": "/",
       "secure": true,
       "httpOnly": false,
-      "expiry": 1769681870.124386,
+      "expiry": 1777354846.222788,
       "domain": ".amazon.in"
-    },
-    {
-      "name": "JSESSIONID",
-      "value": "7D60106C5F9B66FB7C7F50812C719C17",
-      "path": "/",
-      "secure": true,
-      "hostOnly": true,
-      "httpOnly": true,
-      "domain": "www.amazon.in",
-      "sameSite": "lax"
     }
   ]
 }

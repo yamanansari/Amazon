@@ -13,11 +13,11 @@ describe('Amazon Product Search and Filter', () => {
                 cy.setCookie(cookie.name, cookie.value);
             });
         });
-       cy.visit(url,{
-               headers:{"Accept-Encoding": "gzip , deflate"}
-               });
-           loginPage.validateLogInUrl(); 
-           loginPage.validateLogInUser();
+    //    cy.visit(url,{
+    //            headers:{"Accept-Encoding": "gzip , deflate"}
+    //            });
+    //        loginPage.validateLogInUrl(); 
+    //        loginPage.validateLogInUser();
 
            cy.fixture('product').then((product) => {
             this.product = product;

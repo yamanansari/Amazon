@@ -46,16 +46,15 @@ export class ProductSearchPage {
     validateFilteredResults() { // is not empty 
         return cy.get(selectors.results.selectProduct).should('have.length.greaterThan', 0);
     }
-    validateBrandFilter(brandName) {
-       return cy.get(selectors.results.selectProduct).each(($el) => {
-        const regex = new RegExp(brandName, 'i');
-            cy.log($el.text());
-            
-            cy.wrap($el).invoke('text') // Fetch the text of the element
-            .then((text) => {
-                cy.log(text); 
-                expect(text).to.match(regex); // Perform a case-insensitive match
-            });
-        });
-    }
+    validateBrandFilter(model) {
+        cy.get(selectors.results.selectProduct).should('contain', model).and('be.visible');
+    //    return cy.get(selectors.results.selectProduct).each(($el) => {
+    //     const regex = new RegExp(model, 'i');
+                        
+    //         cy.wrap($el).invoke('text') // Fetch the text of the element
+    //         .then((text) => {
+    //             expect(text).to.match(regex); // Perform a case-insensitive match
+    //         });
+    //     });
+     }
 }

@@ -39,7 +39,7 @@ export class WishlistPage {
     }
     removeItemFromWishlist() {
         // Remove the item from the wishlist
-        return cy.get(selectors.wishlistPage.removeButton).click();
+        return cy.get(selectors.wishlistPage.removeButton).click({ multiple: true });
     }
     verifyRemoveItemFromWishlist() {
         // Verify if the item is present in the wishlist

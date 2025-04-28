@@ -1,21 +1,29 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  projectId: "qgh7rz",
   viewportWidth: 1280,
   viewportHeight: 720,
-  retries: {
-    "runMode": 2,  // Number of retries when running tests via cypress run.
-    "openMode": 1  // Number of retries when running tests via cypress open.
+  chromeWebSecurity: false,
+  defaultCommandTimeout:10000,
+  videosFolder: 'cypress/videos',
+  screenshotsFolder: 'cypress/screenshots',
+  cacheAcrossSpecs: true,
+  video: true,
+  // retries: {
+  //   "runMode": 2,  // Number of retries when running tests via cypress run.
+  //   "openMode": 1  // Number of retries when running tests via cypress open.
+  // },
+  env: {
+    // Environment variables
+    CYPRESS_RECORD_KEY: process.env.CYPRESS_RECORD_KEY,
   },
   e2e: {
-    baseUrl: 'https://www.amazon.in',
-        env: {
-            validEmail: '7599900207',
-            validPassword: 'yaman@786',
-          },
+   
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
+    cacheAcrossSpecs: true,
   },defaultCommandTimeout:10000
   // resolution
   // 
