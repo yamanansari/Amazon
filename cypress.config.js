@@ -23,8 +23,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    cacheAcrossSpecs: true,
-  },defaultCommandTimeout:10000
+  }
   // resolution
   // 
 });
