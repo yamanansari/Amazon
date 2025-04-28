@@ -34,18 +34,23 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Chrome
-        run: sudo apt-get install -y google-chrome-stable
+      - name: Install Browser (Chrome, Firefox, Edge)
+        run: |
+          if [[ "${{ matrix.browser }}" == "chrome" ]]; then
+            sudo apt-get install -y google-chrome-stable
+          elif [[ "${{ matrix.browser }}" == "firefox" ]]; then
+            sudo apt-get install -y firefox
+          elif [[ "${{ matrix.browser }}" == "edge" ]]; then
+            sudo apt-get install -y microsoft-edge-stable
+          fi
 
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
+          browser: ${{ matrix.browser }}
           record: true
-          parallel: ${{ github.event.inputs.parallel || 'true' }}
-          browser: ${{ github.event.inputs.browser || 'chrome' }}
-          headed: ${{ github.event.inputs.headed || 'false' }}
-          spec: ${{ github.event.inputs.tag && format('cypress/e2e/**/*{0}*.cy.{1}', github.event.inputs.tag, 'js') || '' }}
-          config: retriesRunMode=${{ github.event.inputs.retries || '2' }}
+          headed: ${{ matrix.headed }}
+          config: retries=${{ matrix.retries }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
 
