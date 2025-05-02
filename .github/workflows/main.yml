@@ -34,10 +34,10 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     container: [1, 2, 3, 4, 5, 6]
+    strategy:
+      fail-fast: false
+      matrix:
+        container: [1, 2, 3, 4, 5, 6]
         
     steps:
       - name: Checkout Code
