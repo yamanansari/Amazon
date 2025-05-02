@@ -15,7 +15,6 @@ const checkoutPage = new CheckoutPage();
 
 describe('Amazon.in Product Search, Add to Cart and Checkout Test', () => {
     before(function (){
-        // cy.reload()
         cy.amazon(); 
     })
                   

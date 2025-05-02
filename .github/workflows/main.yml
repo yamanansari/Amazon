@@ -1,4 +1,3 @@
-
 name: Amazon Tests
 
 on:
@@ -32,9 +31,8 @@ on:
     - cron: '0 0 * * *' # Every night at midnight
 
 jobs:
-  cypress-run:
+  run-tests:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -42,17 +40,18 @@ jobs:
       - name: Install Chrome
         run: sudo apt-get install -y google-chrome-stable
 
-      - name: Run Cypress Tests
+      - name: Run Cypress Tests (Ordered or Parallel)
         uses: cypress-io/github-action@v6
         with:
           record: true
-          parallel: ${{ github.event.inputs.parallel || 'true' }}
-          browser: ${{ github.event.inputs.browser || 'chrome' }}
-          headed: ${{ github.event.inputs.headed || 'false' }}
-          spec: ${{ github.event.inputs.tag && format('cypress/e2e/**/*{0}*.cy.{1}', github.event.inputs.tag, 'js') || '' }}
-          config: retriesRunMode=${{ github.event.inputs.retries || '2' }}
+          parallel: ${{ github.event.inputs.parallel == 'true' }}
+          browser: ${{ github.event.inputs.browser }}
+          headed: ${{ github.event.inputs.headed }}
+          config: retriesRunMode=${{ github.event.inputs.retries }}
+          spec: ${{ github.event.inputs.parallel == 'false' && 'cypress/e2e/TC_01_LoginTest.cy.js,cypress/e2e/TC_02_CheckOutTest.cy.js,cypress/e2e/TC_03_WishListSession.cy.js,cypress/e2e/TC_04_ProductSearchAndFilter.cy.js,cypress/e2e/TC_05_ReviewAndRating.cy.js,cypress/e2e/TC_06_MutlitabHandel.cy.js' || '' }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Screenshots on Failure
         uses: actions/upload-artifact@v4
