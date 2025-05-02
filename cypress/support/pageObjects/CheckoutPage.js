@@ -10,7 +10,7 @@ const selectors = {
             landmark1: "[name *=landmark]",
             city: "#address-ui-widgets-enterAddressCity",
             useAddressButton: "#checkout-primary-continue-button-id-announce",
-            useAddressButton2: '[data-csa-c-slot-id*="continue-address"]',
+            useAddressButton2: '[data-testid="bottom-continue-button"]',
             shippingAddressChangebutton: '[data-frompage="payselect"]'
         },
         addressValidation: {
@@ -43,7 +43,7 @@ export class CheckoutPage {
         cy.get(selectors.checkout.addressForm.addressLine2).clear().type(address.addressLine2);
         cy.get(selectors.checkout.addressForm.landmark1).type(address.landmark);
         cy.get(selectors.checkout.addressForm.city).clear().type(address.city);
-        return cy.get(selectors.checkout.addressForm.useAddressButton2).click({force:true});
+        return cy.get(selectors.checkout.addressForm.useAddressButton2).last().click({force:true});
     }
     validateAddress(address){
         cy.get(selectors.checkout.addressValidation.changeAddressButton,{timeout:10000}).should('exist');
