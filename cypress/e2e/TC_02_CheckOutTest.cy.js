@@ -14,10 +14,10 @@ const checkoutPage = new CheckoutPage();
 // const loginPage = new LoginPage();
 
 describe('Amazon.in Product Search, Add to Cart and Checkout Test', () => {
-    // before(function (){
-    //     cy.reload()
-    //     cy.amazon(validEmail, validPassword); 
-    // })
+    before(function (){
+        cy.reload()
+        cy.amazon(validEmail, validPassword); 
+    })
                   
     beforeEach(function () {
         
