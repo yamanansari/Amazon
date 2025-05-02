@@ -9,23 +9,23 @@ on:
     inputs:
       browser:
         description: 'Browser to run tests (chrome, firefox, edge)'
-        required: false
+        required: true
         default: 'chrome'
       headed:
         description: 'Run tests in headed mode (true/false)'
-        required: false
+        required: true
         default: 'false'
       parallel:
         description: 'Run tests in parallel (true/false)'
-        required: false
+        required: true
         default: 'true'
       retries:
         description: 'Number of retries for failed tests'
-        required: false
+        required: true
         default: '2'
       tag:
         description: 'Cypress tag to filter tests (example: @smoke)'
-        required: false
+        required: true
         default: ''
 
   schedule:
@@ -55,10 +55,9 @@ jobs:
         with:
           record: true
           parallel: ${{ github.event.inputs.parallel == 'true' }}
-          group: Amazon-Tests-${{ github.run_id }} # <-- This will make it UNIQUE for every GitHub workflow run
           browser: ${{ github.event.inputs.browser }}
           headed: ${{ github.event.inputs.headed }}
-          config: retriesRunMode=${{ github.event.inputs.retries }}
+          config: retries RunMode=${{ github.event.inputs.retries }}
           spec: ${{ github.event.inputs.parallel == 'false' && 'cypress/e2e/TC_01_LoginTest.cy.js,cypress/e2e/TC_02_CheckOutTest.cy.js,cypress/e2e/TC_03_WishListSession.cy.js,cypress/e2e/TC_04_ProductSearchAndFilter.cy.js,cypress/e2e/TC_05_ReviewAndRating.cy.js,cypress/e2e/TC_06_MutlitabHandel.cy.js' || '' }}
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
