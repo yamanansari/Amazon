@@ -10,13 +10,17 @@ const ordersPage = new OrdersPage();
 const reviewPage = new ReviewPage();
 
 describe('Amazon Product Review and Rating', () => {
+    before(function (){
+        cy.amazon(); 
+    })
+        
 
     beforeEach(function () {  
-        cy.readFile('cypress/fixtures/session.json').then((session) => {
-            session.cookies.forEach((cookie) => {
-                cy.setCookie(cookie.name, cookie.value);
-            });
-        });
+        // cy.readFile('cypress/fixtures/session.json').then((session) => {
+        //     session.cookies.forEach((cookie) => {
+        //         cy.setCookie(cookie.name, cookie.value);
+        //     });
+        // });
     //    cy.visit(url,{
     //            headers:{"Accept-Encoding": "gzip , deflate"}
     //            });
