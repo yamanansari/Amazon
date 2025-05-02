@@ -14,19 +14,19 @@ const checkoutPage = new CheckoutPage();
 // const loginPage = new LoginPage();
 
 describe('Amazon.in Product Search, Add to Cart and Checkout Test', () => {
-    // before(function (){
-    //     cy.reload()
-    //     cy.amazon(validEmail, validPassword); 
-    // })
+    before(function (){
+        // cy.reload()
+        cy.amazon(); 
+    })
                   
     beforeEach(function () {
         
        
-        cy.readFile('cypress/fixtures/session.json').then((session) => {
-            session.cookies.forEach((cookie) => {
-                cy.setCookie(cookie.name, cookie.value);
-            });
-        });
+        // cy.readFile('cypress/fixtures/session.json').then((session) => {
+        //     session.cookies.forEach((cookie) => {
+        //         cy.setCookie(cookie.name, cookie.value);
+        //     });
+        // });
     //    cy.visit(url,{
     //            headers:{"Accept-Encoding": "gzip , deflate"}
     //            });
