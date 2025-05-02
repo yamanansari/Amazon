@@ -27,6 +27,7 @@ on:
         description: 'Cypress tag to filter tests (example: @smoke)'
         required: false
         default: ''
+
   schedule:
     - cron: '0 0 * * *'
 
@@ -46,13 +47,12 @@ jobs:
       - name: Install Chrome
         run: sudo apt-get install -y google-chrome-stable
 
-      - name: Run Cypress Tests (Parallel or Ordered)
+      - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
-          load-balance: true
           record: true
           parallel: ${{ github.event.inputs.parallel == 'true' }}
-          group: 'Amazon Tests'
+          group: Amazon-Tests-${{ github.run_id }} # <-- This will make it UNIQUE for every GitHub workflow run
           browser: ${{ github.event.inputs.browser }}
           headed: ${{ github.event.inputs.headed }}
           config: retriesRunMode=${{ github.event.inputs.retries }}
