@@ -9,19 +9,19 @@ on:
     inputs:
       browser:
         description: 'Browser to run tests (chrome, firefox, edge)'
-        required: true
+        required: false
         default: 'chrome'
       headed:
         description: 'Run tests in headed mode (true/false)'
-        required: true
+        required: false
         default: 'false'
       parallel:
         description: 'Run tests in parallel (true/false)'
-        required: true
+        required: false
         default: 'true'
       retries:
         description: 'Number of retries for failed tests'
-        required: true
+        required: false
         default: '2'
       tag:
         description: 'Cypress tag to filter tests (example: @smoke)'
@@ -33,12 +33,6 @@ on:
 jobs:
   run-tests:
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        container: [1,2] # Use [1, 2, 3] for real parallelization
-
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
