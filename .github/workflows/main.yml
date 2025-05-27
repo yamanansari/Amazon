@@ -32,7 +32,7 @@ on:
 
 jobs:
   run-tests:
-    runs-on: Windows-latest
+    runs-on: windows-latest
     
     strategy:
       fail-fast: false
