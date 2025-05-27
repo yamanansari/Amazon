@@ -37,7 +37,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        container: [1, 2, 3, 4, 5, 6]
+        container: [1]
 
     steps:
       - name: Checkout Code
