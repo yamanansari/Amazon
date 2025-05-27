@@ -14,7 +14,7 @@ on:
       headed:
         description: 'Run tests in headed mode (true/false)'
         required: false
-        default: 'false'
+        default: 'true'
       parallel:
         description: 'Run tests in parallel (true/false)'
         required: false
@@ -52,7 +52,7 @@ jobs:
           record: true
           parallel: ${{ github.event.inputs.parallel || 'true' }}
           browser: ${{ github.event.inputs.browser || 'chrome' }}
-          headed: ${{ github.event.inputs.headed || 'false' }}
+          headed: ${{ github.event.inputs.headed || 'true' }}
           spec: ${{ github.event.inputs.tag && format('cypress/e2e/**/*{0}*.cy.{1}', github.event.inputs.tag, 'js') || '' }}
           config: retries=${{ github.event.inputs.retries || '2' }}
         env:
