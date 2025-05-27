@@ -34,32 +34,25 @@ Cypress.Commands.add('amazon', () => {
 
       cy.wait(2000); // Wait for CAPTCHA or navigation to appear
 
-      cy.get('body').then(($body) => {
-        const hasCaptcha =
-          $body.find('#captchacharacters').length ||
-          $body.find('iframe[src*="captcha"]').length ||
-          $body.find('[name*="captcha_token"]').length;
-      
-        if (hasCaptcha) {
-          if (retryCount < 2) {
-            cy.log('CAPTCHA detected! Refreshing page and retrying login...');
-            cy.reload().then(() => {
-              attemptLogin(retryCount + 1);
-            });
-          } else {
-            throw new Error('CAPTCHA still detected after 3 attempts. Aborting login.');
-          }
-        } else {
-          cy.log('No CAPTCHA detected. Proceeding with post-login validations.');
-      
-          loginPage.validateLogInUrl();
-          loginPage.validateLogInUser();
-      
-
-          cy.getCookies().then((cookies) => {
-            cy.writeFile('cypress/fixtures/session.json', { cookies });
+      cy.contains("puzzle").then(() => {
+        
+        if (retryCount < 2) {
+          cy.log('CAPTCHA detected via URL! Reloading page...');
+          cy.reload().then(() => {
+            attemptLogin(retryCount + 1);
           });
+        } else {
+          throw new Error('CAPTCHA still detected after 3 attempts. Aborting login.');
         }
+
+        cy.log('No CAPTCHA detected. Proceeding with post-login validations.');
+
+        loginPage.validateLogInUrl(); 
+        loginPage.validateLogInUser();
+
+        cy.getCookies().then((cookies) => {
+          cy.writeFile('cypress/fixtures/session.json', { cookies });
+        });
       });
     };
 
