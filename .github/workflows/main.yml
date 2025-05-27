@@ -43,8 +43,8 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Chrome
-        run: sudo apt-get install -y google-chrome-stable
+      # - name: Install Chrome
+      #   run: sudo apt-get install -y google-chrome-stable
 
       - name: Run Cypress Tests (Ordered or Parallel)
         uses: cypress-io/github-action@v6
