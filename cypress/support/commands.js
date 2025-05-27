@@ -26,6 +26,20 @@ Cypress.Commands.add('amazon', () => {
       // cy.get('#signInSubmit').click();
       loginPage.typeInEmail(validEmail);
   loginPage.clickContinue();
+
+  // Check for CAPTCHA before continuing
+  cy.document().then((doc) => {
+    const hasCaptcha = doc.querySelector('#captchacharacters') || doc.querySelector('iframe[src*="captcha"]');
+    
+    if (hasCaptcha) {
+      cy.log('CAPTCHA detected! Refreshing page...');
+      cy.reload();
+      loginPage.visitSignInPage();
+      loginPage.typeInEmail(validEmail);
+      loginPage.clickContinue();
+    }
+  });
+
   loginPage.typeInPassword(validPassword, { log: false });
   loginPage.clickSignIn();
 

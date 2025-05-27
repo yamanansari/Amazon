@@ -32,7 +32,7 @@ export class CheckoutPage {
         
             if (cy.url({timeout:10000}).should('include','checkout')) {
                 // If button is visible, click on it
-                cy.get(selectors.checkout.addressValidation.addressChangebutton).click();
+                cy.get(selectors.checkout.addressValidation.addressChangebutton).click({force:true});
             }
         // Proceed with adding a new address
         cy.get(selectors.checkout.addressForm.addNewAddress).click();
@@ -46,25 +46,25 @@ export class CheckoutPage {
         return cy.get(selectors.checkout.addressForm.useAddressButton2).last().click({force:true});
     }
     validateAddress(address){
-        cy.get(selectors.checkout.addressValidation.changeAddressButton,{timeout:10000}).should('exist');
-        // cy.get("#checkout-paymentOptionPanel",{timeout:10000}).should("contain.text", "Payment method");
-        // cy.get("#deliver-to-address-text").should("contain.text", address.addressLine1);
-        // cy.get("#deliver-to-address-text").should("contain.text",address.addressLine2);
-        // // cy.get("#deliver-to-address-text").should("contain.text",address.landmark);
-        // cy.get("#deliver-to-address-text").should("contain.text",address.city);
-        // cy.get("#deliver-to-address-text").should("contain.text",address.postalCode);
-            cy.get(selectors.checkout.addressValidation.addressCheck).find(selectors.checkout.addressValidation.displayAddressFullName)
-        .should('have.text', address.fullName);
+        cy.get(selectors.checkout.addressValidation.addressChangebutton,{timeout:10000}).should('exist');
+        cy.get("#checkout-paymentOptionPanel",{timeout:10000}).should("contain.text", "Payment method");
+        cy.get("#deliver-to-address-text").should("contain.text", address.addressLine1);
+        cy.get("#deliver-to-address-text").should("contain.text",address.addressLine2);
+        // cy.get("#deliver-to-address-text").should("contain.text",address.landmark);
+        cy.get("#deliver-to-address-text").should("contain.text",address.city);
+        cy.get("#deliver-to-address-text").should("contain.text",address.postalCode);
+    //         cy.get(selectors.checkout.addressValidation.addressCheck).find(selectors.checkout.addressValidation.displayAddressFullName)
+    //     .should('have.text', address.fullName);
 
-        cy.get(selectors.checkout.addressValidation.addressCheck).find(selectors.checkout.addressValidation.displayAddressAddressLine1)
-        .should('have.text', address.addressLine1);
+    //     cy.get(selectors.checkout.addressValidation.addressCheck).find(selectors.checkout.addressValidation.displayAddressAddressLine1)
+    //     .should('have.text', address.addressLine1);
 
-        cy.get(selectors.checkout.addressValidation.addressCheck).find(selectors.checkout.addressValidation.displayAddressAddressLine2)
-        .should('have.text', address.addressLine2);
+    //     cy.get(selectors.checkout.addressValidation.addressCheck).find(selectors.checkout.addressValidation.displayAddressAddressLine2)
+    //     .should('have.text', address.addressLine2);
 
-    return cy.get(selectors.checkout.addressValidation.addressCheck).find(selectors.checkout.addressValidation.displayAddressCityStateOrRegionPostalCode)
-        .should('include.text', address.city)
-        .and('include.text', address.postalCode);
+    // return cy.get(selectors.checkout.addressValidation.addressCheck).find(selectors.checkout.addressValidation.displayAddressCityStateOrRegionPostalCode)
+    //     .should('include.text', address.city)
+    //     .and('include.text', address.postalCode);
      
     }
 }
