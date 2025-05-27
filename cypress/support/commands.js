@@ -34,15 +34,10 @@ Cypress.Commands.add('amazon', () => {
 
       cy.wait(2000); // Wait for CAPTCHA or navigation to appear
 
-      cy.document().then((doc) => {
-        const hasCaptcha =
-          doc.querySelector('#captchacharacters') ||
-          doc.querySelector('iframe[src*="captcha"]') ||
-          doc.querySelector('[name*="captcha_token"]');
-
-        if (hasCaptcha) {
+      cy.url().then((currentUrl) => {
+        if (currentUrl.includes('ap/cvf/request')) {
           if (retryCount < 2) {
-            cy.log('🚫 CAPTCHA detected! Refreshing page and retrying login...');
+            cy.log('🚫 CAPTCHA detected via URL! Reloading page...');
             cy.reload().then(() => {
               attemptLogin(retryCount + 1);
             });
