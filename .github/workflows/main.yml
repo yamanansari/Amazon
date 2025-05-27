@@ -32,18 +32,19 @@ on:
 
 jobs:
   run-tests:
-    runs-on: windows-latest
-
+    runs-on: ubuntu-latest
+    
     strategy:
       fail-fast: false
       matrix:
         container: [1]
-
+        
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # Removed Chrome installation step for Windows
+      - name: Install Chrome
+        run: sudo apt-get install -y google-chrome-stable
 
       - name: Run Cypress Tests (Ordered or Parallel)
         uses: cypress-io/github-action@v6
