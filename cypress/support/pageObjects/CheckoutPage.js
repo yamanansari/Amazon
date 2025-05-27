@@ -35,7 +35,7 @@ export class CheckoutPage {
                 cy.get(selectors.checkout.addressValidation.addressChangebutton).click({force:true});
             }
         // Proceed with adding a new address
-        cy.get(selectors.checkout.addressForm.addNewAddress).click();
+        cy.get(selectors.checkout.addressForm.addNewAddress).click({force:true});
         cy.get(selectors.checkout.addressForm.fullName).clear().type(address.fullName);
         cy.get(selectors.checkout.addressForm.phoneNumber).clear().type(address.phoneNumber);
         cy.get(selectors.checkout.addressForm.postalCode).clear().type(address.postalCode);
