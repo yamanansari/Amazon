@@ -24,7 +24,7 @@ Cypress.Commands.add('amazon', () => {
       // cy.get('#ap_password').type(password, { log: false });
       // cy.get('#signInSubmit').click();
     const attemptLogin = (retryCount = 0) => {
-      cy.log(`🔁 Login attempt #${retryCount + 1}`);
+      cy.log(`Login attempt #${retryCount + 1}`);
 
       loginPage.visitSignInPage();
       loginPage.typeInEmail(validEmail);
@@ -37,15 +37,15 @@ Cypress.Commands.add('amazon', () => {
       cy.url().then((currentUrl) => {
         if (currentUrl.includes('ap/cvf/request')) {
           if (retryCount < 2) {
-            cy.log('🚫 CAPTCHA detected via URL! Reloading page...');
+            cy.log('CAPTCHA detected via URL! Reloading page...');
             cy.reload().then(() => {
               attemptLogin(retryCount + 1);
             });
           } else {
-            throw new Error('❌ CAPTCHA still detected after 3 attempts. Aborting login.');
+            throw new Error('CAPTCHA still detected after 3 attempts. Aborting login.');
           }
         } else {
-          cy.log('✅ No CAPTCHA detected. Proceeding with post-login validations.');
+          cy.log('No CAPTCHA detected. Proceeding with post-login validations.');
 
           loginPage.validateLogInUrl(); 
           loginPage.validateLogInUser();
