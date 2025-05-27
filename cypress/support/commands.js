@@ -11,12 +11,11 @@ const loginPage = new LoginPage();
 //   loginPage.typeInPassword(password, { log: false });
 //   loginPage.clickSignIn();
 // });
+
 Cypress.Commands.add('amazon', () => {
   cy.session("amazon session ", () => {
-    cy.visit('/')
-        loginPage.visitSignInPage()
-        
-      // Visit the login page
+    cy.visit('/');
+// Visit the login page
       // cy.visit('/');
       // cy.get("#nav-link-accountList").click();
       // // Fill in email and password
@@ -24,32 +23,47 @@ Cypress.Commands.add('amazon', () => {
       // cy.get('#continue').click();
       // cy.get('#ap_password').type(password, { log: false });
       // cy.get('#signInSubmit').click();
-      loginPage.typeInEmail(validEmail);
-  loginPage.clickContinue();
+    const attemptLogin = (retryCount = 0) => {
+      cy.log(`🔁 Login attempt #${retryCount + 1}`);
 
-  // Check for CAPTCHA before continuing
-  cy.document().then((doc) => {
-    const hasCaptcha = doc.querySelector('#captchacharacters') || doc.querySelector('iframe[src*="captcha"]');
-    
-    if (hasCaptcha) {
-      cy.log('CAPTCHA detected! Refreshing page...');
-      cy.reload();
       loginPage.visitSignInPage();
       loginPage.typeInEmail(validEmail);
       loginPage.clickContinue();
-    }
+      loginPage.typeInPassword(validPassword, { log: false });
+      loginPage.clickSignIn();
+
+      cy.wait(2000); // Wait for CAPTCHA or navigation to appear
+
+      cy.document().then((doc) => {
+        const hasCaptcha =
+          doc.querySelector('#captchacharacters') ||
+          doc.querySelector('iframe[src*="captcha"]') ||
+          doc.querySelector('[name*="captcha_token"]');
+
+        if (hasCaptcha) {
+          if (retryCount < 2) {
+            cy.log('🚫 CAPTCHA detected! Refreshing page and retrying login...');
+            cy.reload().then(() => {
+              attemptLogin(retryCount + 1);
+            });
+          } else {
+            throw new Error('❌ CAPTCHA still detected after 3 attempts. Aborting login.');
+          }
+        } else {
+          cy.log('✅ No CAPTCHA detected. Proceeding with post-login validations.');
+
+          loginPage.validateLogInUrl(); 
+          loginPage.validateLogInUser();
+
+          cy.getCookies().then((cookies) => {
+            cy.writeFile('cypress/fixtures/session.json', { cookies });
+          });
+        }
+      });
+    };
+
+    attemptLogin(); // Start the login process
   });
-
-  loginPage.typeInPassword(validPassword, { log: false });
-  loginPage.clickSignIn();
-
-      loginPage.validateLogInUrl(); 
-      loginPage.validateLogInUser();
-
-      cy.getCookies().then((cookies) => {
-        cy.writeFile('cypress/fixtures/session.json', { cookies });
-    });
-    
-  });
-
 });
+
+
